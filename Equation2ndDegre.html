@@ -1,0 +1,75 @@
+<meta charset="UTF-8">
+<html>
+    <head>
+        
+        <h2 align="center" style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">Equation du 2nd degré</h2>
+        <script language ="javascript">
+// fonction qui prend en argument les coefficients de la fonction pour ensuite renvoyer les solutions. 1 si le discrimant est égale à 0, 2 si le discrimant est positif et aucune si le discrminant est négatif.
+            function Equation2ndDegre(){
+                var a= document.getElementById("valeurA").value; //Premier coefficient
+                var b= document.getElementById("valeurB").value; //Deuxième coefficient
+                var c= document.getElementById("valeurC").value; //Troisème coefficient
+                if(a!=0){
+                    var delta= b*b-4*a*c;  // Calcul du déterminant
+                    if(delta<0){alert("Pas de solution réelles");} // Pas de solution
+                    if(delta>0){
+                        x1=(-b-Math.sqrt(delta))/2*a; // 1er solution
+                        x2=(-b+Math.sqrt(delta))/2*a; // 2e solution
+                        alert("Première solution :" +x1);
+                        alert("Deuxieme solution:" +x2);
+                        
+                    }
+                    if(delta=0){
+                        x= -b/2*a; // Unique solution
+                        alert("Unique solution :" +x)
+                    }
+                }
+            }
+    </script>
+</head>
+
+<body style="background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);"> 
+    <table style="width:70%" align="center">
+        <tr>
+            <td></td>
+            <td> 
+                <form>
+                    <a href="Page d'accueil.html">
+                    <input type="button" style="background-color:#fbc2eb" value="Page d'Accueil" >
+                </a>
+            </form>
+            
+            <td>
+                <form>
+                    <a href="index.html">
+                        <input type="button" value="Calculatrice" style="background-color:#fbc2eb" >
+                    </a>
+                </form>
+            </td>
+            <td>
+                <form>
+                    <a href="Equation2ndDegre.html">
+                        <input type="button" value="Equation du 2nd degré" style="background-color:#fbc2eb" >
+                    </a>
+                </form>
+            </td>
+            <td>
+                <form>
+                    <a href="ProduitMatriciel.html">
+                        <input type="button" value="Calcul Matriciel"style="background-color:#fbc2eb" >
+                    </a>
+                </form>
+            </td>
+        </tr>
+        </table> 
+        <table align="center" border="4"> 
+            <tr style="background-color:rgba(7, 147, 222, 0.804)" ><td>Quels sont les coefficients ?</td></tr>
+    <tr style="background-color:rgba(74, 195, 222, 0.804)"><td>
+        <font style="font-family:Tahoma;">Entrer la valeur de a: </font><input type="text" id="valeurA" value="" ><br></br>
+        <font style="font-family:Tahoma;">Entrer la valeur de b: </font><input type="text" id="valeurB" value=""><br></br>
+        <font style="font-family:Tahoma;">Entrer la valeur de c: </font><input type="text" id="valeurC" value=""><br></br>
+        <input type="submit" value="Afficher les solutions Solution(s)" onclick="Equation2ndDegre()" style="background-color:rgba(122, 84, 246, 0.804)">
+    </td></tr>
+    </table>
+        </body>
+</html>

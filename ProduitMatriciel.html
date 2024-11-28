@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head >
+    <meta charset="UTF-8">
+    <title>Calcul matriciel</title>
+</head>
+<body style="background-color:#a6c1ee;">
+    
+    <h2 align="center"  style="font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"> CalculFacile </h2> 
+    <table style="width:70%" align="center">
+        
+        <tr>
+            <td></td>
+            <td> 
+                <form>
+                    <a href="Page d'accueil.html">
+                    <input type="button" value="Page d'Accueil"style="background-color:#fbc2eb" >
+                </a>
+            </form>
+            
+            <td>
+                <form>
+                    <a href="index.html">
+                        <input type="button" value="Calculatrice"style="background-color:#fbc2eb" >
+                    </a>
+                </form>
+            </td>
+            <td>
+                <form>
+                    <a href="Equation2ndDegre.html">
+                        <input type="button" value="Equation du 2nd degré"style="background-color:#fbc2eb" >
+                    </a>
+                </form>
+            </td>
+            <td>
+                <form>
+                    <a href="ProduitMatriciel.html">
+                        <input type="button" value="Calcul matriciel"style="background-color:#fbc2eb" >
+                    </a>
+                </form>
+            </td>
+        </tr>
+        </table>
+
+    <script> 
+    // Fonction pour faire le produit de 2 matrices
+        function produitMatrices(a,b){
+            let x = a.length,  //nombre de ligne première matrice
+            z = a[0].length,   //nombre de colonne première matrice
+            y = b[0].length;   // nombre de colonne deuxième matrice
+            let produitLigne = Array.apply(null, new Array(y)).map(Number.prototype.valueOf, 0); //création du tableau
+            let produit = new Array(x);
+            for (let p = 0; p < x; p++) {
+            produit[p] = produitLigne.slice(); //prend la ligne p du tableau
+            }
+            for (let i = 0; i < x; i++) {
+            for (let j = 0; j < y; j++) {
+                for (let k = 0; k < z; k++) {
+                    produit[i][j] += parseInt(a[i][k]) * parseInt(b[k][j]); //multiplie 1 colonne par toutes les lignes
+                }
+            }
+            }
+            alert(produit)
+            return produit;
+        }
+        // fonction pour faire la somme de 2 matrices
+        function sommeMatrices(a,b){
+            let x = a.length,  //nombre de ligne première matrice
+            y = a[0].length,   //nombre de colonne première matrice
+            z = b[0].length,   // nombre de colonne deuxième matrice
+            t=b.length;
+            let somme = new Array(x);
+            for (let u = 0;u < x;u++){
+                somme[u]= new Array(y);
+                for (let p=0;p<y;p++){
+                    somme[u][p]=parseInt(a[u][p])+parseInt(b[u][p]);
+            }
+            }
+            alert(somme)
+            return somme
+        }
+            // Fonction pour faire la différence de 2 matrices
+        function diffMatrices(a,b){
+            let x = a.length,  //nombre de ligne première matrice
+            y = a[0].length,   //nombre de colonne première matrice
+            z = b[0].length,   // nombre de colonne deuxième matrice
+            t=b.length;
+            let diff = new Array(x);
+            for (let u = 0;u < x;u++){
+                diff[u]= new Array(y);
+                for (let p=0;p<y;p++){
+                    diff[u][p]=parseInt(a[u][p])-parseInt(b[u][p]);
+            }
+            }
+            alert(diff)
+            return diff
+        }
+
+    function tableau(){             //crée les deux matrices entrées par l'utilisateur en js
+        let matt1=new Array(2);
+        for(let j=0;j<2;j++){
+            matt1[j]=new Array(2);
+        }
+        let matt2=new Array(2);
+        for(let jj=0;jj<2;jj++){
+            matt2[jj]=new Array(2);
+        }
+        matt1[0][0]=document.getElementById('val1').value;
+        matt1[0][1]=document.getElementById('val2').value;
+        matt1[1][0]=document.getElementById('val3').value;
+        matt1[1][1]=document.getElementById('val4').value;
+        matt2[0][0]=document.getElementById('val5').value;
+        matt2[0][1]=document.getElementById('val6').value;
+        matt2[1][0]=document.getElementById('val7').value;
+        matt2[1][1]=document.getElementById('val8').value;
+        return [matt1,matt2]
+    }
+
+    let a=tableau()[0]  //matrice 1
+    let b=tableau()[1]  //matrice 2
+    window.alert = function(title, message){ 
+        var myElementToShow = document.getElementById("someElementId"); 
+        myElementToShow.innerHTML = title + "</br>" + message; }
+
+    </script>
+    <br>
+    <table align="center">
+        <tr>
+            <td align='center' colspan="2" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Matrice 1</td><td align='center' colspan="2"style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Matrice 2</td>
+        </tr>
+        <tr>
+            <td> <input type="int" id="val1"></td>  <td id="d"> <input type="int" id="val2"></td> <td> <input type="int" id="val5"></td>  <td> <input type="int" id="val6"></td>
+        </tr>
+        <tr>
+            <td><input type="int" id="val3"></td>  <td id="d"> <input type="int" id="val4"></td> <td><input type="int" id="val7"></td>  <td> <input type="int" id="val8"></td>
+        </tr>
+    </table >
+    <style>
+        #d{
+            padding-right: 20px;
+    }
+        </style>
+    <br>
+    <table align="center">
+        <tr> <td></td>
+        <td align="center"><input type="submit" value="Valider les matrices" onclick="tableau()" style="background-color: bisque;" ></td></tr>
+    <tr><td><input type="submit" value="Afficher la somme des matrices" onclick="sommeMatrices(tableau()[0],tableau()[1])" style="background-color: bisque;"></td>
+    <td><input type="submit" value="Afficher la différence des matrices" onclick="diffMatrices(tableau()[0],tableau()[1])" style="background-color: bisque;"></td>
+    <td>    <input type="submit" value="Afficher le produit des matrices" onclick="produitMatrices(tableau()[0],tableau()[1])" style="background-color: bisque;"></td></tr>
+    </table>
+</body>
+</html>
